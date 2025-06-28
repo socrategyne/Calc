@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>PCM Scientific Calculator</title>
+  <style>
+    body {
+      background: #222;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #display {
+      width: 260px;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      padding: 15px;
+      font-size: 18px;
+      width: 60px;
+      margin: 5px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
+    .btn:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Simple Calculator</h1>
+  <input id="display" readonly><br>
+
+  <div>
+    <button class="btn" onclick="press('1')">1</button>
+    <button class="btn" onclick="press('2')">2</button>
+    <button class="btn" onclick="press('3')">3</button>
+    <button class="btn" onclick="press('+')">+</button><br>
+
+    <button class="btn" onclick="press('4')">4</button>
+    <button class="btn" onclick="press('5')">5</button>
+    <button class="btn" onclick="press('6')">6</button>
+    <button class="btn" onclick="press('-')">-</button><br>
+
+    <button class="btn" onclick="press('7')">7</button>
+    <button class="btn" onclick="press('8')">8</button>
+    <button class="btn" onclick="press('9')">9</button>
+    <button class="btn" onclick="press('*')">*</button><br>
+
+    <button class="btn" onclick="press('0')">0</button>
+    <button class="btn" onclick="press('.')">.</button>
+    <button class="btn" onclick="calculate()">=</button>
+    <button class="btn" onclick="press('/')">/</button><br>
+
+    <button class="btn" onclick="clearDisplay()">C</button>
+  </div>
+
+  <script>
+    let input = '';
+    function press(val) {
+      input += val;
+      document.getElementById('display').value = input;
+    }
+    function calculate() {
+      try {
+        input = eval(input).toString();
+        document.getElementById('display').value = input;
+      } catch {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+    function clearDisplay() {
+      input = '';
+      document.getElementById('display').value = '';
+    }
+  </script>
+</body>
+</html>
